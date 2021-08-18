@@ -1,0 +1,29 @@
+<ul class="pagination" style="margin: 20px auto; flex-wrap:wrap; justify-content: center;">
+    <% if(camps.page - 1) { %>
+        <li class="page-item my-1"><a class="page-link" style="color: #fb5607;" href="/campgrounds?page=<%= camps.page - 1 %>">Prev</a></li>
+        <% } %>
+            <% if (camps.pages > 1 && camps.docs.length) { %>
+                <% if(camps.page>8){ %>
+                    <% for(let i = 8; i >=0 ; i--) { %>
+                        <li class="page-item my-1">
+                            <a class="page-link" style="<%= (parseInt(camps.page)-i+1)==camps.page ? 'color:#370617;':'color:#fb5607' %> " href="/campgrounds?page=<%= parseInt(camps.page)-i+1 %>">
+                                <%= parseInt(camps.page)-i+1 %>
+                            </a>
+                        </li>
+                        <% } %>
+                            <% }else{ %>
+                                <% for(let i=1;i<=9;i++){ %>
+                                    <li class="page-item my-1">
+                                        <a class="page-link" style="<%= i==camps.page ? 'color:#370617;':'color:#fb5607' %> " href="/campgrounds?page=<%= i%>">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                                        <% } %>
+                                            <% } %>
+
+                                                <% if((parseInt(camps.page) + 1) <= camps.pages) { %>
+                                                    <li class="page-item my-1"><a class="page-link" href="#">...</a></li>
+                                                    <li class="page-item my-1"><a class="page-link" style="color: #fb5607;" href="/campgrounds?page=<%= parseInt(camps.page) + parseInt(1) %>">Next</a></li>
+                                                    <% } %>
+</ul>
