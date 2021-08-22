@@ -135,7 +135,7 @@ const seedDB = async() => {
         const random17 = Math.floor(Math.random() * 17);
         const random20 = Math.floor(Math.random() * 20);
         const camp = new Campground({
-            author: '611d6200aaaafe0016acc6af',
+            author: '6122991832094703465253fa',
             location: `${cities2[i].city}, ${cities2[i].admin_name}`,
             title: `${seedsHelper.descriptors[random17]} ${seedsHelper.places[random20]}`,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel provident consectetur unde, veritatis illum maiores ad in aspernatur non natus impedit optio nobis laborum expedita excepturi doloribus autem. Doloremque, rerum.",

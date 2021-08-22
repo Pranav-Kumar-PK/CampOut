@@ -22,6 +22,14 @@ module.exports.validateCampground = (req, res, next) => {
     }
 }
 
+module.exports.emailVerified = async(req, res, next) => {
+    if (!req.user.verifiedEmail) {
+        req.flash("error", "Email not verified");
+        return res.redirect("/campgrounds");
+    }
+    next();
+}
+
 module.exports.isAuthor = async(req, res, next) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);

@@ -1,4 +1,5 @@
 const Campground = require("../models/campground");
+const User = require("../models/user");
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
@@ -6,6 +7,14 @@ const FuzzySearch = require("fuzzy-search");
 
 module.exports.index = async(req, res) => {
     const allCamps = await Campground.find({});
+    if (req.query.confirm) {
+        if (req.query.confirm == req.user._id) {
+            req.user.verifiedEmail = true;
+            const verifiedUser = await User.findByIdAndUpdate(req.query.confirm, { verifiedEmail: true });
+            req.flash("success", "Email verification successful");
+            res.redirect("/campgrounds");
+        }
+    }
     if (!req.query.page) {
         req.query.page = 1;
     }
