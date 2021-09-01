@@ -9,9 +9,9 @@ module.exports.register = async(req, res) => {
     try {
         const { email, username, password } = req.body;
         const user = new User({ email, username });
-        const registeredUser = await User.register(user, password);
+        const registeredUser = await User.register(user, password);                                                        
 
-        const mailOutput = `<p>Please click on the link below to confirm your email id on CampOut <br> <a href="https://blooming-sea-54963.herokuapp.com/campgrounds?confirm=${user._id}">Verify Email</a> <br>Thank You</p>`;
+        const mailOutput = `<p>Please click on the link below to confirm your email id on CampOut <br> <a href="https://camp-out-28.herokuapp.com/campgrounds?confirm=${user._id}">Verify Email</a> <br>Thank You</p>`;
         async function main() {
             // Generate test SMTP service account from ethereal.email
             // Only needed if you don't have a real mail account for testing
