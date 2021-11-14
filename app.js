@@ -21,10 +21,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const { MongoStore } = require('connect-mongo');
 const MongoDBStore = require('connect-mongo')(session);
-// const dbUrl = 'mongodb://localhost:27017/yelpCamp';
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelpCamp';
-// 'mongodb://localhost:27017/yelpCamp'
-// "mongodb+srv://PranavKumar:EEoX6Sma6ECaVGfQ@cluster0.90zcz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then((d) => {
@@ -36,7 +33,7 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFi
     })
 
 
-const secret = process.env.SECRET || "Causeiamslimshady";
+const secret = process.env.SECRET;
 const store = new MongoDBStore({
     url: dbUrl,
     secret,
